@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Simple example</title>
+</head>
+<body>
+
+     If you don't know what this page do, open the javascript console ;)
+
+<script type="text/javascript">
+
+function getXDomainRequest() {
+     var xdr = null;
+
+     if (window.XDomainRequest) {
+	     xdr = new XDomainRequest(); 
+     } else if (window.XMLHttpRequest) {
+	     xdr = new XMLHttpRequest(); 
+     } else {
+	     alert("Check your internet connexion !");
+     }
+
+     return xdr;	
+}
+
+
+function getRevelations() {
+     var xdr = getXDomainRequest();
+     
+     xdr.onload = function() {
+          console.log(JSON.parse(xdr.responseText));
+     };
+     xdr.open("GET", "./api.php/Revelations", true);
+     xdr.setRequestHeader("Content-Type", "application/json");
+     xdr.send();
+}
+
+getRevelations();
+
+</script>
+
+</body>
+</html>
