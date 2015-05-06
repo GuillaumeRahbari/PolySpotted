@@ -20,14 +20,45 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/dashboard.html',
+        controller: 'MasterCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/tables', {
+        templateUrl: 'views/tables.html',
+        controller: 'AlertsCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+
+  })
+  .run(function ($rootScope, $cookieStore) {
+    /**
+     * Sidebar Toggle & Cookie Control
+     */
+    var mobileView = 992;
+
+    $rootScope.getWidth = function() {
+      return window.innerWidth;
+    };
+
+    $rootScope.$watch($rootScope.getWidth, function(newValue, oldValue) {
+      if (newValue >= mobileView) {
+
+        $rootScope.toggle = true;
+
+      } else {
+        $rootScope.toggle = false;
+      }
+
+    });
+
+    $rootScope.toggleSidebar = function() {
+      $rootScope.toggle = !$rootScope.toggle;
+      $cookieStore.put('toggle', $rootScope.toggle);
+    };
+
+    window.onresize = function() {
+      $rootScope.$apply();
+    };
   });
