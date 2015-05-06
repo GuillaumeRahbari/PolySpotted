@@ -6,6 +6,7 @@ class Revelation {
 	public $tags = null;
 	public $message = null;
 	public $like = null;
+	public $author = null;
 
 	private $password = null;
 
@@ -20,6 +21,7 @@ class Revelation {
 			$this->message = $donnees['message'];
 			$this->like = ($donnees['like']);
 			$this->password = ($donnees['password']);
+			$this->author = ($donnees['author']);
 		}
 
 		$this->tags = array();

@@ -54,5 +54,16 @@ function getTag($name) {
 	} else {
 		return json_encode(array("status" => "error", "data" => "Ce tag n'existe pas"));
 	}
+}
 
+function getUsers () {
+	$bdd = getBdd();
+	$tags = $bdd->query("SELECT DISTINCT author FROM reveal_revelations");
+
+	$resultat = array();
+
+	while ($donnees = $tags->fetch()) {
+		$resultat [] = new User($donnees['author']);
+	}
+	return json_encode(array("status" => "success", "data" => $resultat));
 }

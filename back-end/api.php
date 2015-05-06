@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');  
 
 require_once 'lib/limonade.php';
-require_once 'class/Revelation.class.php';
+require_once 'class/User.class.php';
 
 require_once 'php_functions/create.php';
 require_once 'php_functions/read.php';
@@ -20,6 +20,7 @@ dispatch_get('/Revelations', 'getAllRevelations');
 dispatch_get('/Revelations/:id', 'getRevelation');
 dispatch_get('/Tags', 'getAllTags');
 dispatch_get('/Tags/:name/Revelations', 'getTag');
+dispatch_get('/Users', 'getUsers');
 
 /* UPDATE */
 dispatch_put('/Revelations/:id/incr', 'incr');
