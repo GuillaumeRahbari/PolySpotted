@@ -1,3 +1,2 @@
--> obtenir la liste des tags avec le nombre de fois qu'il apparait
--> pouvoir obtenir la liste de toutes les révélations comprenant le tag choisit
--> 
+-> obtenir la liste des tags avec le nombre de fois qu'il apparait (on peut le faire côté front-end)
+-> pouvoir obtenir la liste de toutes les révélations comprenant le tag choisit (fait)
