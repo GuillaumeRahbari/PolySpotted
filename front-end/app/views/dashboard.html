@@ -4,6 +4,13 @@
   </div>
 </div>
 
+<div ng-show="loading">
+	Chargement...
+</div>
+<div ng-repeat="tag in tags" ng-hide="loading">
+	{{tag}}
+</div>
+
 <div class="row">
 	<div class="col-lg-4 col-md-4 col-xs-12">
 		<rd-widget>

@@ -19,6 +19,7 @@
         <!-- endbuild -->
     </head>
     <body ng-app="polySpottedApp">
+
         <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
             <!-- Sidebar -->
@@ -128,8 +129,9 @@
                     <div ng-view></div>
 
                 </div><!-- End Page Content -->
-            </div><!-- End Content Wrapper -->
-        </div><!-- End Page Wrapper -->
+            </div>
+            
+        </div>
 
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
@@ -155,7 +157,7 @@
         <script src="scripts/directives/widget-body.js"></script>
         <script src="scripts/directives/widget-footer.js"></script>
         <script src="scripts/directives/widget-header.js"></script>
-
+        <script src="scripts/services/ExampleFactory.js"></script>
     <!-- endbuild -->
     </body>
 </html>
