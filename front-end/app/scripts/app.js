@@ -46,4 +46,5 @@ angular
     window.onresize = function() {
         $rootScope.$apply();
     };
-});
+})
+.value('$baseURL', 'http://localhost/PolySpotted/back-end/api.php');

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Mer 22 Avril 2015 à 19:02
--- Version du serveur: 5.5.41-0ubuntu0.14.04.1
--- Version de PHP: 5.5.9-1ubuntu4.7
+-- Client :  127.0.0.1
+-- Généré le :  Jeu 07 Mai 2015 à 22:38
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `polyreveal`
+-- Base de données :  `polyreveal`
 --
 
 -- --------------------------------------------------------
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `reveal_revelations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` text NOT NULL,
   `message` varchar(255) NOT NULL,
   `like` int(200) NOT NULL DEFAULT '0',
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

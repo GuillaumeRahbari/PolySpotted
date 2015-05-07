@@ -4,8 +4,13 @@ function addRevelation() {
 	if (isset($_POST['password']) && isset($_POST['message']) && strlen($_POST['message']) > 0) {
 		$_POST['password'] = addslashes($_POST['password']);
 		$_POST['message'] = addslashes($_POST['message']);
+		if (isset($_POST['author'])) {
+			$_POST['author'] = addslashes($_POST['author']);
+		} else {
+			$_POST['author'] = "Anonyme";
+		}
 		$bdd = getBdd();
-		$isadded = $bdd->exec('INSERT INTO reveal_revelations(message, password) VALUES ("'.$_POST['message'].'","'.$_POST['password'].'")') == 1;
+		$isadded = $bdd->exec('INSERT INTO reveal_revelations(author, message, password) VALUES ("'.$_POST['author'].'", "'.$_POST['message'].'","'.$_POST['password'].'")') == 1;
 		if ($isadded) {
 			return json_encode(array("status" => "success", "data" => new Revelation($bdd->lastInsertId())));
 		} else {

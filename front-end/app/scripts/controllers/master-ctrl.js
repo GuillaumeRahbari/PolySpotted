@@ -3,13 +3,13 @@
  */
 
 angular.module('polySpottedApp')
-    .controller('MasterCtrl', ['$scope', '$cookieStore', 'ExampleFactory', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore', 'TagFactory', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, ExampleFactory) {
+function MasterCtrl($scope, $cookieStore, TagFactory) {
 
 	$scope.loading = true;
 
-	setTimeout(function() {ExampleFactory.getTags().then(
+	setTimeout(function() {TagFactory.getTags().then(
 		function (data) { // success
 			console.log(data);
 			$scope.tags = data;
