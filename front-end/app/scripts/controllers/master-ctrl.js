@@ -3,13 +3,23 @@
  */
 
 angular.module('polySpottedApp')
-    .controller('MasterCtrl', ['$scope', '$cookieStore', 'TagFactory', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$cookieStore', 'TagFactory', 'RevelationFactory', MasterCtrl]);
 
-function MasterCtrl($scope, $cookieStore, TagFactory) {
+function MasterCtrl($scope, $cookieStore, TagFactory, RevelationFactory) {
 
 	$scope.loading = true;
 
-	setTimeout(function() {TagFactory.getTags().then(
+	//RevelationFactory.username = "delmotte";
+
+	/*RevelationFactory.voteForRevelation(2,false).then(
+		function (data) {
+			console.log(data);
+		}, function (msg) {
+			console.log(msg);
+		}
+	);*/
+
+	/*TagFactory.getTags().then(
 		function (data) { // success
 			console.log(data);
 			$scope.tags = data;
@@ -18,7 +28,7 @@ function MasterCtrl($scope, $cookieStore, TagFactory) {
 			console.log('ERREUR : ', msg);
 			$scope.loading = false;
 		}
-	);}, 1000);
+	);*/
 
 	
 

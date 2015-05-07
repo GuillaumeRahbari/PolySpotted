@@ -52,8 +52,8 @@ angular
 			$http({
 				method: 'POST',
 				url: $baseURL + '/Revelations',
-				headers: {'Content-Type': 'application/json'},
-				data: object
+				data: object,
+				headers: {'Content-Type': 'application/json'}
 			}).success(function (data, status) { // success du php
 				if (data.status == "success") { // success de la bdd
 					deferred.resolve(data.data);
