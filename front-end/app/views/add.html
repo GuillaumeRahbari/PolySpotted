@@ -3,7 +3,7 @@
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Auteur <span class="text-warning">(Facultatif)</span></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" ng-model="author" placeholder="Auteur">
+				<input type="text" class="form-control" ng-model="author" placeholder="Auteur" ng-space="return;">
 			</div>
 		</div>
 		<div class="form-group">
@@ -15,7 +15,7 @@
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" ng-model="password" placeholder="Password">
+				<input type="password" class="form-control" ng-model="password" placeholder="Password">
 			</div>
 		</div>
 		<div class="form-group">
@@ -27,7 +27,7 @@
 		</div>
 		<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label"></label>
-			<div class="col-sm-10">
+			<div class="col-sm-10" ng-show="taglist.length > 0">
 				<span class="tag animated fadeIn" ng-repeat="tag in taglist">{{tag}}</span>
 			</div>
 		</div>
@@ -36,5 +36,7 @@
 				<button type="submit" class="btn btn-info" ng-click="addRevelation()">Ajouter Révélation</button>
 			</div>
 		</div>
+		<div id="addSuccess" class="col-sm-10 col-sm-offset-2 bg-success animated fadeIn" style="padding:15px">Ajouté Avec Succès</div>
+		<div id="addError" class="col-sm-10 col-sm-offset-2 bg-danger animated fadeIn" style="padding:15px">Ajouté Avec Error</div>
 	</div>
 </div>

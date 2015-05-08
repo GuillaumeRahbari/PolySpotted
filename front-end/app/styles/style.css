@@ -21,6 +21,11 @@
 	cursor:pointer;
 }
 
+.tag a {
+  	text-decoration: none;
+  	color: inherit;
+}
+
 .revelation .author {
 	color:lightgrey;
 }

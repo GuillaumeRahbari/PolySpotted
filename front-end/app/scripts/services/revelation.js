@@ -83,13 +83,41 @@ angular
 		},
 		voteForRevelation: function (id, bool) {
 			var deferred = $q.defer();
+			var again = false;
+			if (bool && localStorage.getItem("votefor"+id) === "plus") {
+				bool = false;
+				localStorage.removeItem("votefor"+id);
+			} else if (!bool && localStorage.getItem("votefor"+id) === "moins") {
+				bool = true;
+				localStorage.removeItem("votefor"+id);
+			} else if (bool && localStorage.getItem("votefor"+id) === "moins") {
+				bool = true;
+				again = true;
+				localStorage.removeItem("votefor"+id);
+			} else if (!bool && localStorage.getItem("votefor"+id) === "plus") {
+				bool = false;
+				again = true;
+				localStorage.removeItem("votefor"+id);
+			} else {
+				localStorage.setItem("votefor"+id, bool ? "plus" : "moins");
+			}
 			$http({
 				method: 'PUT',
 				url: $baseURL + '/Revelations/' + id + '/' + (bool ? 'incr':'decr'),
 				headers: {'Content-Type': 'application/json'}
 			}).success(function (data, status) { // success du php
 				if (data.status == "success") { // success de la bdd
-					deferred.resolve(data.data);
+					if (again) {
+						factory.voteForRevelation(id, bool).then(
+							function (data2) {
+								deferred.resolve(data2);
+							}, function (data2) {
+								deferred.reject(data2);
+							}
+						);
+					} else {
+						deferred.resolve(data.data);
+					}
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}

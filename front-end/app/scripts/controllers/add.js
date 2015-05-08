@@ -3,11 +3,14 @@
  */
 
 angular.module('polySpottedApp')
-    .controller('AddCtrl', ['$scope', '$cookieStore', 'RevelationFactory', AddCtrl]);
+    .controller('AddCtrl', ['$scope', '$cookieStore', 'RevelationFactory', '$rootScope', AddCtrl]);
 
-function AddCtrl($scope, $cookieStore, RevelationFactory) {
+function AddCtrl($scope, $cookieStore, RevelationFactory, $rootScope) {
 
 	//RevelationFactory.username = "delmotte";
+	$rootScope.title = 'Révéler un secret';
+
+	$("#addSuccess, #addError").css('display','none');
 
 	$scope.taglist = [];
 
@@ -33,10 +36,11 @@ function AddCtrl($scope, $cookieStore, RevelationFactory) {
 		}
 		RevelationFactory.createRevelation($scope.revelation, $scope.password, $scope.author).then(
 			function (data) {
-				console.log("ajouté avec succès");
 				recursiveTagAdd(data.id, 0);
 			}, function (msg) {
-				console.log(msg);
+				$("#addError").css('display','block');
+				$("#addSuccess").css('display','none');
+				$("#addError").html(msg);
 			}
 		);
 	}
@@ -45,14 +49,21 @@ function AddCtrl($scope, $cookieStore, RevelationFactory) {
 		if (index < $scope.taglist.length) {
 			RevelationFactory.addTag(id, $scope.taglist[index]).then(
 				function (data) {
-					console.log("tag ajouté");
 					recursiveTagAdd(id, index+1);
 				}, function (msg) {
-					console.log("erreur lors de l'ajout de tag");
+					$("#addError").css('display','block');
+					$("#addSuccess").css('display','none');
+					$("#addError").html(msg);
 				}
 			);
 		} else {
 			$scope.taglist = [];
+			$scope.author = "";
+			$scope.revelation = "";
+			$scope.password = "";
+			$scope.tagtoadd = "";
+			$("#addError").css('display','none');
+			$("#addSuccess").css('display','block');
 		}
 		
 	}
