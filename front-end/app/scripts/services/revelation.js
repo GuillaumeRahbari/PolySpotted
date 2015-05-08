@@ -2,10 +2,6 @@ angular
 .module('polySpottedApp')
 .factory('RevelationFactory', function ($q, $http, $baseURL) {
 	var factory = {
-		username: null,
-		chooseUsername: function (name) {
-			factory.username = name;
-		},
 		getRevelations: function () {
 			var deferred = $q.defer();
 			$http({
@@ -40,14 +36,14 @@ angular
 			});
 			return deferred.promise;
 		},
-		createRevelation: function (message, password) {
+		createRevelation: function (message, password, username) {
 			var deferred = $q.defer();
 			var object = {
 				message: message,
 				password: password
 			};
-			if (factory.username) {
-				object.author = factory.username;
+			if (username) {
+				object.author = username;
 			}
 			$http({
 				method: 'POST',

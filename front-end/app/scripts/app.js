@@ -20,6 +20,10 @@ angular
       templateUrl: 'views/tables.html',
       controller: 'AlertsCtrl'
     })
+    .when('/add', {
+      templateUrl: 'views/add.html',
+      controller: 'AddCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

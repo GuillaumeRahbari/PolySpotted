@@ -30,6 +30,4 @@ function MasterCtrl($scope, $cookieStore, TagFactory, RevelationFactory) {
 		}
 	);*/
 
-	
-
 }
