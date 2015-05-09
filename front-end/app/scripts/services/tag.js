@@ -1,3 +1,5 @@
+'use strict';
+
 angular
 .module('polySpottedApp')
 .factory('TagFactory', function ($q, $http, $baseURL) {
@@ -8,13 +10,13 @@ angular
 				method: 'GET',
 				url: $baseURL + '/Tags',
 				headers: {'Content-Type': 'application/json'}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					deferred.resolve(data.data);
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
@@ -23,16 +25,16 @@ angular
 			var deferred = $q.defer();
 			$http({
 				method: 'GET',
-				url: $baseURL + '/Tags/' + tagname + "/Revelations",
+				url: $baseURL + '/Tags/' + tagname + '/Revelations',
 				//url:'forguigui',
 				headers: {'Content-Type': 'application/json'}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					deferred.resolve(data.data);
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
