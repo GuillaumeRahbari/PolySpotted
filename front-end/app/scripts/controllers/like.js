@@ -1,12 +1,12 @@
+'use strict';
+
 /**
  * Add Controller
  */
 
 angular.module('polySpottedApp')
-    .controller('LikeCtrl', ['$rootScope', LikeCtrl]);
-
-function LikeCtrl($rootScope) {
+    .controller('LikeCtrl', ['$rootScope', function LikeCtrl($rootScope) {
 
 	$rootScope.title = 'Mes Likes';
 
-}
+}]);
