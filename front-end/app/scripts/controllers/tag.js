@@ -13,7 +13,6 @@ angular.module('polySpottedApp')
       TagFactory.getRevelationsByTag($routeParams.tagname).then(
         function (data) {
           $scope.tags = data;
-          console.log($scope.tags);
         }, function (msg) {
           console.log(msg);
         }
