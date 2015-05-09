@@ -76,4 +76,6 @@ angular
 
     $rootScope.title = 'Home';
 })
-.value('$baseURL', 'http://localhost/PolySpotted/back-end/api.php');
+//.value('$baseURL', 'http://localhost/PolySpotted/back-end/api.php');
+
+.value('$baseURL', 'http://localhost:8888/back-end/api.php');

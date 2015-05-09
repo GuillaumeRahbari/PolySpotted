@@ -15,7 +15,6 @@ function AddCtrl($scope, $cookieStore, RevelationFactory, $rootScope) {
 	$scope.taglist = [];
 
 	$scope.addTag = function () {
-		console.log("add");
 		if ($scope.tagtoadd && $scope.taglist.indexOf($scope.tagtoadd) < 0) {
 			$scope.taglist.push($scope.tagtoadd);
 			$scope.tagtoadd = "";
