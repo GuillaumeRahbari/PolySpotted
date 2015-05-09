@@ -5,7 +5,8 @@
  */
 
 angular.module('polySpottedApp')
-    .controller('TagsCtrl', ['$scope', '$rootScope', 'TagFactory','RevelationFactory', function TagsCtrl($scope, $rootScope, TagFactory, RevelationFactory) {
+    .controller('TagsCtrl', ['$scope', '$rootScope', 'TagFactory','RevelationFactory',
+    function TagsCtrl($scope, $rootScope, TagFactory, RevelationFactory) {
 
     //RevelationFactory.username = "delmotte";
     $rootScope.title = 'Les Tags';
