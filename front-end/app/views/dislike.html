@@ -1,1 +1,50 @@
-TODO (je le ferais guigui)
+<div class="row animated fadeInRight" style="padding-right:15px;padding-left:15px;">
+  <div class="col-xs-12 revelation" ng-repeat="revelation in revelations.slice().reverse()">
+    <a class="close" ng-click="openModal(revelation.id)"><i class="fa fa-times"></i></a>
+    <div>
+      {{revelation.message}}
+      <span class="author">- <i ng-hide="revelation.author == 'Anonyme'" class="fa fa-user"></i> {{revelation.author}} <a ng-href="#/users/{{revelation.author}}" ng-hide="revelation.author == 'Anonyme'">(voir le profil)</a></span>
+    </div>
+    <br>
+    <div>
+      <span class="tag" ng-repeat="tag in revelation.tags"><a ng-href="#/tags/{{tag}}">#{{tag}}</a></span>
+      <span ng-show="revelation.tags.length == 0">Aucun Tag</span>
+    </div>
+    <br>
+    <div>
+      <span class="score">Score : <span ng-class="revelation.like > 0 ? 'positive': (revelation.like == 0 ? '':'negative')">{{revelation.like}}</span></span>
+      &nbsp;&nbsp;
+      <a style="cursor:pointer" ng-click="vote(revelation.id,true)"><i class="fa fa-thumbs-o-up fa-2x" ng-class="hasVoted(revelation.id, true) ? 'like':''"></i></a>
+      &nbsp;&nbsp;
+      <a style="cursor:pointer" ng-click="vote(revelation.id,false)"><i class="fa fa-thumbs-o-down fa-2x" ng-class="hasVoted(revelation.id, false) ? 'dislike':''"></i></a>
+    </div>
+  </div>
+  <div ng-show="revelations.length == 0">
+  	Vous n'avez disliké aucun tag, Bravo !
+  </div>
+</div>
+
+<div class="modal fade" id="passwordModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Entrer le mot de passe</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" style="height:35px;">
+          <label for="inputEmail3" class="col-sm-2 control-label">Mot De Passe</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" ng-model="password" placeholder="Mot De Passe" ng-enter="deleteRevelation()">
+          </div>
+        </div>
+        <p id="deleteError" class="bg-danger" style="padding:10px">...</p>
+        <p id="deleteSuccess" class="bg-success" style="padding:10px">Suppression effectuée</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" ng-click="deleteRevelation()">Supprimer</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,8 +1,8 @@
 <div class="row animated fadeInRight" style="padding-right:15px;padding-left:15px;">
   <div class="col-xs-12 revelation">
     <div >
-      <span class="tag" ng-repeat="tag in tags | orderBy:-numberTag">
-        <a ng-href="#/tags/{{tag}}">#{{tag}}</a>
+      <span class="tag" ng-repeat="tag in tags | orderBy:numberTag(tag)">
+        <a ng-href="#/tags/{{tag}}">#{{tag}} {{numberTag(tag)}}</a>
       </span>
     </div>
   </div>
