@@ -1,11 +1,11 @@
+'use strict';
+
 /**
  * Add Controller
  */
 
 angular.module('polySpottedApp')
-    .controller('TagsCtrl', ['$scope', '$rootScope', 'TagFactory','RevelationFactory', TagsCtrl]);
-
-function TagsCtrl($scope, $rootScope, TagFactory, RevelationFactory) {
+    .controller('TagsCtrl', ['$scope', '$rootScope', 'TagFactory','RevelationFactory', function TagsCtrl($scope, $rootScope, TagFactory, RevelationFactory) {
 
 	//RevelationFactory.username = "delmotte";
 	$rootScope.title = 'Les Tags';
@@ -42,6 +42,6 @@ function TagsCtrl($scope, $rootScope, TagFactory, RevelationFactory) {
     }
     //console.log(number);
     return number;
-  }
+  };
 
-}
+}]);
