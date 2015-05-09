@@ -57,7 +57,7 @@ angular
         return window.innerWidth;
     };
 
-    $rootScope.$watch($rootScope.getWidth, function(newValue, oldValue) {
+    $rootScope.$watch($rootScope.getWidth, function(newValue) {
         if (newValue >= 992) {
             $rootScope.toggle = true;
         } else {

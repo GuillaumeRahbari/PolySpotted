@@ -1,12 +1,12 @@
+'use strict';
+
 /**
  * Add Controller
  */
 
 angular.module('polySpottedApp')
-    .controller('DislikeCtrl', ['$rootScope', DislikeCtrl]);
+    .controller('DislikeCtrl', ['$rootScope', function DislikeCtrl($rootScope) {
 
-function DislikeCtrl($rootScope) {
+	  $rootScope.title = 'Mes Dislikes';
 
-	$rootScope.title = 'Mes Dislikes';
-
-}
+}]);
