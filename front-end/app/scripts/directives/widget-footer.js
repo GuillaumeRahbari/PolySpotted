@@ -1,12 +1,12 @@
+'use strict';
+
 /**
  * Widget Footer Directive
  */
 
 angular
     .module('polySpottedApp')
-    .directive('rdWidgetFooter', rdWidgetFooter);
-
-function rdWidgetFooter() {
+    .directive('rdWidgetFooter', function rdWidgetFooter() {
     var directive = {
         requires: '^rdWidget',
         transclude: true,
@@ -14,4 +14,4 @@ function rdWidgetFooter() {
         restrict: 'E'
     };
     return directive;
-};
+});

@@ -1,12 +1,12 @@
+'use strict';
+
 /**
  * Widget Header Directive
  */
 
 angular
     .module('polySpottedApp')
-    .directive('rdWidgetHeader', rdWidgetTitle);
-
-function rdWidgetTitle() {
+    .directive('rdWidgetHeader', function rdWidgetTitle() {
     var directive = {
         requires: '^rdWidget',
         scope: {
@@ -18,4 +18,4 @@ function rdWidgetTitle() {
         restrict: 'E'
     };
     return directive;
-};
+});

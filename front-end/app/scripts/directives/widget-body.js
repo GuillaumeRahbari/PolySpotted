@@ -1,12 +1,12 @@
+'use strict';
+
 /**
  * Widget Body Directive
  */
 
 angular
     .module('polySpottedApp')
-    .directive('rdWidgetBody', rdWidgetBody);
-
-function rdWidgetBody() {
+    .directive('rdWidgetBody', function rdWidgetBody() {
     var directive = {
         requires: '^rdWidget',
         scope: {
@@ -18,4 +18,4 @@ function rdWidgetBody() {
         restrict: 'E'
     };
     return directive;
-};
+});
