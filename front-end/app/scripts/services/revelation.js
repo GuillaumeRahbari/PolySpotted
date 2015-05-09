@@ -1,3 +1,5 @@
+'use strict';
+
 angular
 .module('polySpottedApp')
 .factory('RevelationFactory', function ($q, $http, $baseURL) {
@@ -8,13 +10,13 @@ angular
 				method: 'GET',
 				url: $baseURL + '/Revelations',
 				headers: {'Content-Type': 'application/json'}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					deferred.resolve(data.data);
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
@@ -25,13 +27,13 @@ angular
 				method: 'GET',
 				url: $baseURL + '/Revelations/' + id,
 				headers: {'Content-Type': 'application/json'}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					deferred.resolve(data.data);
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
@@ -50,13 +52,13 @@ angular
 				url: $baseURL + '/Revelations',
 				data: object,
 				headers: {'Content-Type': 'application/json'}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					deferred.resolve(data.data);
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
@@ -70,13 +72,13 @@ angular
 				data: {
 					tagname: tagname
 				}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					deferred.resolve(data.data);
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
@@ -84,29 +86,29 @@ angular
 		voteForRevelation: function (id, bool) {
 			var deferred = $q.defer();
 			var again = false;
-			if (bool && localStorage.getItem("votefor"+id) === "plus") {
+			if (bool && localStorage.getItem('votefor'+id) === 'plus') {
 				bool = false;
-				localStorage.removeItem("votefor"+id);
-			} else if (!bool && localStorage.getItem("votefor"+id) === "moins") {
+				localStorage.removeItem('votefor'+id);
+			} else if (!bool && localStorage.getItem('votefor'+id) === 'moins') {
 				bool = true;
-				localStorage.removeItem("votefor"+id);
-			} else if (bool && localStorage.getItem("votefor"+id) === "moins") {
+				localStorage.removeItem('votefor'+id);
+			} else if (bool && localStorage.getItem('votefor'+id) === 'moins') {
 				bool = true;
 				again = true;
-				localStorage.removeItem("votefor"+id);
-			} else if (!bool && localStorage.getItem("votefor"+id) === "plus") {
+				localStorage.removeItem('votefor'+id);
+			} else if (!bool && localStorage.getItem('votefor'+id) === 'plus') {
 				bool = false;
 				again = true;
-				localStorage.removeItem("votefor"+id);
+				localStorage.removeItem('votefor'+id);
 			} else {
-				localStorage.setItem("votefor"+id, bool ? "plus" : "moins");
+				localStorage.setItem('votefor'+id, bool ? 'plus' : 'moins');
 			}
 			$http({
 				method: 'PUT',
 				url: $baseURL + '/Revelations/' + id + '/' + (bool ? 'incr':'decr'),
 				headers: {'Content-Type': 'application/json'}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					if (again) {
 						factory.voteForRevelation(id, bool).then(
 							function (data2) {
@@ -121,7 +123,7 @@ angular
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
@@ -135,13 +137,13 @@ angular
 				data: {
 					password: password
 				}
-			}).success(function (data, status) { // success du php
-				if (data.status == "success") { // success de la bdd
+			}).success(function (data) { // success du php
+				if (data.status === 'success') { // success de la bdd
 					deferred.resolve(data.data);
 				} else { // error de la bdd
 					deferred.reject(data.data);
 				}
-			}).error(function (data, status) {
+			}).error(function () {
 				deferred.reject('Erreur de connexion !');
 			});
 			return deferred.promise;
