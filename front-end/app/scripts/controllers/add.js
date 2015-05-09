@@ -65,7 +65,7 @@ function AddCtrl($scope, $cookieStore, RevelationFactory, $rootScope) {
 			$("#addError").css('display','none');
 			$("#addSuccess").css('display','block');
 		}
-		
+
 	}
 
 }
