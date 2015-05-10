@@ -1,8 +1,12 @@
+<div class="row" style="padding-right:15px;padding-left:15px;margin-bottom:15px">
+	<input type="text" ng-model="query" class="querysearch" placeholder="Recherche...">
+</div>
+
 <div class="row animated fadeInRight" style="padding-right:15px;padding-left:15px;">
   <div class="col-xs-12 revelation">
-    <div >
-      <span class="tag" ng-repeat="tag in tags | orderBy:'-nbOccurences'">
-        <a ng-href="#/tags/{{tag.tagName}}">#{{tag.tagName}} {{tag.nbOccurences}}</a>
+    <div>
+      <span class="tag" ng-repeat="tag in tags | orderBy:'-nbOccurences' | filter:query">
+        <a ng-href="#/tags/{{tag.tagName}}">#{{tag.tagName}} <span class="badge">{{tag.nbOccurences}}</span></a>
       </span>
     </div>
   </div>

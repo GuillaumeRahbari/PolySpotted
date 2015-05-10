@@ -1,5 +1,9 @@
+<div class="row" style="padding-right:15px;padding-left:15px;margin-bottom:15px">
+	<input type="text" ng-model="query" class="querysearch" placeholder="Recherche...">
+</div>
+
 <div class="row animated fadeInRight" style="padding-right:15px;padding-left:15px;">
-  <div class="col-xs-12 revelation" ng-repeat="user in users | orderBy:'-revelations.length'" ng-hide="user.name == 'Anonyme'">
+  <div class="col-xs-12 revelation" ng-repeat="user in users | orderBy:'-revelations.length' | filter:query" ng-hide="user.name == 'Anonyme'">
     <span class="author" ng-hide="user.name == 'Anonyme'">
       <div>
         <i class="fa fa-user"></i>

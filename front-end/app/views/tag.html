@@ -1,5 +1,5 @@
 <div class="row animated fadeInRight" style="padding-right:15px;padding-left:15px;">
-  <div class="col-xs-12 revelation" ng-repeat="revelation in tags | orderBy:'-like'">
+  <div class="col-xs-12 revelation" ng-repeat="revelation in tags.slice().reverse()">
     <a class="close" ng-click="openModal(revelation.id)"><i class="fa fa-times"></i></a>
     <div>
       {{revelation.message}}
