@@ -28,7 +28,6 @@ angular.module('polySpottedApp')
               console.log(msg);
             }
           );
-          //console.log($scope.revelations);
         }, function (msg) {
           console.log(msg);
         }
