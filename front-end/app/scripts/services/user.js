@@ -21,21 +21,20 @@ angular
 			});
 			return deferred.promise;
 		},
-    getRevelationsByUser: function (username) {
+    getUser: function (username) {
       var deferred = $q.defer();
-      $http({
-        method: 'GET',
-        url: $baseURL + '/Users/' + username + '/Revelations',
-        headers: {'Content-Type': 'application/json'}
-      }).success(function (data) { // success du php
-        if (data.status === 'success') { // success de la bdd
-          deferred.resolve(data.data);
-        } else { // error de la bdd
-          deferred.reject(data.data);
+      factory.getUsers().then(
+        function (data) {
+          for (var i in data) {
+            if (data[i].name === username) {
+              deferred.resolve(data[i]);
+              break;
+            }
+          }
+        }, function (msg) {
+          deferred.reject(msg);
         }
-      }).error(function () {
-        deferred.reject('Erreur de connexion !');
-      });
+      );
       return deferred.promise;
     }
 	};
