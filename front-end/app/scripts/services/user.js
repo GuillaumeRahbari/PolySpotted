@@ -21,9 +21,23 @@ angular
 			});
 			return deferred.promise;
 		},
-		chooseUsername: function (name) {
-			factory.username = name;
-		}
+    getRevelationsByUser: function (username) {
+      var deferred = $q.defer();
+      $http({
+        method: 'GET',
+        url: $baseURL + '/Users/' + username + '/Revelations',
+        headers: {'Content-Type': 'application/json'}
+      }).success(function (data) { // success du php
+        if (data.status === 'success') { // success de la bdd
+          deferred.resolve(data.data);
+        } else { // error de la bdd
+          deferred.reject(data.data);
+        }
+      }).error(function () {
+        deferred.reject('Erreur de connexion !');
+      });
+      return deferred.promise;
+    }
 	};
 	return factory;
 });
