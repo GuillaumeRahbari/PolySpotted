@@ -5,8 +5,19 @@
  */
 
 angular.module('polySpottedApp')
-    .controller('UsersCtrl', ['$rootScope', function UsersCtrl($rootScope) {
+    .controller('UsersCtrl', ['$rootScope', 'UserFactory', '$scope',
+    function UsersCtrl($rootScope, UserFactory, $scope) {
 
-	$rootScope.title = 'Utilisateurs';
+
+      $rootScope.title = 'Utilisateurs';
+
+      UserFactory.getUsers().then(
+        function (data) {
+          $scope.users = data;
+          console.log($scope.users);
+        }, function (msg) {
+          console.log(msg);
+        }
+      );
 
 }]);

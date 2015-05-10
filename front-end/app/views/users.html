@@ -1,1 +1,11 @@
-TODO
+<div class="row animated fadeInRight" style="padding-right:15px;padding-left:15px;">
+  <div class="col-xs-12 revelation" ng-repeat="user in users | orderBy:'-revelations.length'" ng-hide="user.name == 'Anonyme'">
+    <span class="author" ng-hide="user.name == 'Anonyme'">
+      <div>
+        <i class="fa fa-user"></i>
+        {{user.name}}
+        <a ng-href="#/users/{{user.name}}">(voir le profil)</a>
+      </div>
+    </span>
+  </div>
+</div>
