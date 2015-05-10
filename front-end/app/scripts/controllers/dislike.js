@@ -5,43 +5,44 @@
  */
 
 angular.module('polySpottedApp')
-    .controller('DislikeCtrl', ['$rootScope', '$scope', 'RevelationFactory', '$route', '$window', function LikeCtrl($rootScope, $scope, RevelationFactory, $route, $window) {
+    .controller('DislikeCtrl', ['$rootScope', '$scope', 'RevelationFactory', '$route', '$window', '$timeout',
+    function LikeCtrl($rootScope, $scope, RevelationFactory, $route, $window, $timeout) {
 
-	  $rootScope.title = 'Mes Dislikes';
+      $rootScope.title = 'Mes Dislikes';
 
-	  $scope.revelations = new Array();
-	var ids = [];
+      $scope.revelations = [];
+      var ids = [];
 
-	var recursiveLoad = function (index) {
-		if (index < ids.length) {
-			RevelationFactory.getRevelation(ids[index]).then(
-				function (data) {
-					$scope.revelations.push(data);
-					recursiveLoad(index+1);
-				}, function (msg) {
-					console.log(msg);
-					recursiveLoad(index+1);
-				}
-			);
-		}
-	}
-	
-	var recursiveReload = function () {
-		$scope.revelations = [];
-		ids = [];
-		for (var i = 0; i < 10000; i++) {
-			if (localStorage.getItem('votefor'+i) === "moins") {
-				ids.push(i);
-			}
-		}
-		recursiveLoad(0);
-	}
+      var recursiveLoad = function (index) {
+        if (index < ids.length) {
+          RevelationFactory.getRevelation(ids[index]).then(
+            function (data) {
+              $scope.revelations.push(data);
+              recursiveLoad(index+1);
+            }, function (msg) {
+              console.log(msg);
+              recursiveLoad(index+1);
+            }
+          );
+        }
+      };
 
-	recursiveReload();
+      var recursiveReload = function () {
+        $scope.revelations = [];
+        ids = [];
+        for (var i = 0; i < 10000; i++) {
+          if (localStorage.getItem('votefor'+i) === 'moins') {
+            ids.push(i);
+          }
+        }
+        recursiveLoad(0);
+      };
 
-	$scope.vote = function (id, bool) {
+      recursiveReload();
+
+      $scope.vote = function (id, bool) {
         RevelationFactory.voteForRevelation(id,bool).then(
-          function (data) {
+          function () {
             $route.reload();
           }, function (msg) {
             console.log(msg);
