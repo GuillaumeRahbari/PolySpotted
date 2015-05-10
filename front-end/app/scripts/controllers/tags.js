@@ -24,8 +24,6 @@ angular.module('polySpottedApp')
                 };
                 $scope.tags.push(objet);
               }
-              //console.log($scope.tags);
-              console.log($scope.tags);
             }, function (msg) {
               console.log(msg);
             }
@@ -38,13 +36,10 @@ angular.module('polySpottedApp')
 
       $scope.numberTag = function(tag){
         var number = 0;
-        console.log($scope.revelations);
         for (var revelation in $scope.revelations){
-          console.log("cccc");
           for (var tag2 in $scope.revelations[revelation].tags){
             if (tag === $scope.revelations[revelation].tags[tag2]){
               number++;
-              console.log("bbbbbbb");
             }
           }
         }
