@@ -4,6 +4,7 @@ angular
 .module('polySpottedApp')
 .factory('UserFactory', function ($q, $http, $baseURL) {
 	var factory = {
+
 		getUsers: function () {
 			var deferred = $q.defer();
 			$http({
